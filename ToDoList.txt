@@ -1,0 +1,50 @@
+class ToDoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task_description):
+        self.tasks.append(task_description)
+        print("Task added successfully!")
+
+    def remove_task(self, task_description):
+        if task_description in self.tasks:
+            self.tasks.remove(task_description)
+            print("Task removed successfully!")
+        else:
+            print("Task not found in the list.")
+
+    def display_tasks(self):
+        if self.tasks:
+            print("Your To-Do List:")
+            for index, task_description in enumerate(self.tasks, start=1):
+                print(f"{index}. {task_description}")
+        else:
+            print("Your To-Do List is empty.")
+
+def main():
+    todo_list = ToDoList()
+
+    while True:
+        print("\nChoose an option:")
+        print("1. Add Task")
+        print("2. Remove Task")
+        print("3. Display Tasks")
+        print("4. Quit")
+
+        choice = input("Enter your choice  ")
+
+        if choice == '1':
+            task_description = input("Enter the task to add: ")
+            todo_list.add_task(task_description)
+        elif choice == '2':
+            task_description = input("Enter the task to remove: ")
+            todo_list.remove_task(task_description)
+        elif choice == '3':
+            todo_list.display_tasks()
+        elif choice == '4':
+            print("Thank you for using the To-Do List!")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+main()
